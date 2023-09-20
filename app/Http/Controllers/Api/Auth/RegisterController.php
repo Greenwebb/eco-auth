@@ -16,14 +16,16 @@ class RegisterController extends Controller
 {
     use PasswordValidationRules;
     public function register(Request $request)
-    {
+    {   
+        // dd('here');
         try {
             $input = $request->toArray();
+            // dd($input);
             Validator::make($input, [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => $this->passwordRules(),
-                'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+                // 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
             ])->validate();
     
             $user =  User::create([
@@ -34,29 +36,36 @@ class RegisterController extends Controller
             // Optionally, you can generate an API token here for the registered user
             $token = $user->createToken('api-token')->plainTextToken;
 
-            $this->registerDetails($input, $user);
+            $details = $this->registerDetails($input, $user);
 
-            return response()->json(['message' => 'User registered successfully', 'data'=>$user, 'token'=> $token], 201);
+            return response()->json([
+                'message'=>'User registered successfully',
+                'data'=>$user,
+                'token'=> $token,
+                'service' => $details->service
+            ]);
+
         } catch (\Throwable $th) {
-            return response()->json(['message' => 'User registrtion failed', 'data'=>[], 'token'=>''], 500);
+            return response()->json(['message' => 'User registrtion failed', 'data'=>$th, 'service'=>[], 'token'=>''], 500);
         }
     }
 
 
     public function registerDetails($data, $user){
-        UserDetail::create([
-            'business_type' => $data['business_type'],
+        $result = UserDetail::create([
+            'business_type' => $data['businessType'],
             'fullname' => $data['fullname'],
-            'phone_number' => $data['phone_number'],
+            'phone_number' => $data['phoneNumber'],
             'city' => $data['city'],
             'province' => $data['province'],
             'age' => $data['age'],
             'sex' => $data['sex'],
             'languages' => $data['languages'],
-            'employement' => $data['employement'],
+            'employement' => $data['employment'],
             'service' => $data['service'],
             'user_id' => $user->id,
         ]);
+        return $result;
     }
 
 
