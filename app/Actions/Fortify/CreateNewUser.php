@@ -2,6 +2,8 @@
 
 namespace App\Actions\Fortify;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -26,10 +28,25 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+        $user = User::create([
+                    'name' => $input['name'],
+                    'email' => $input['email'],
+                    'email_verified_at' => now(),
+                    'customer_group' => 'guest',
+                    'status' => true,
+                    'password' => Hash::make($input['password']),
+                    'global_secret_word' => $input['password'],
+                ]);
+
+        if (!empty($input['destination'])) {
+            $user->current_source = $input['source'];
+            $user->current_destination = $input['destination'];
+            $user->save();
+        }
+              
+        
+        Mail::to($user->email)->send(new WelcomeEmail($user));
+        return $user;
     }
+
 }

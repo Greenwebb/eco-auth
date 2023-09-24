@@ -29,6 +29,7 @@ class RegisterController extends Controller
             $user =  User::create([
                         'name' => $input['name'],
                         'email' => $input['email'],
+                        'customer_group' => 'provider',
                         'password' => Hash::make($input['password']),
                     ]);
             // Optionally, you can generate an API token here for the registered user
