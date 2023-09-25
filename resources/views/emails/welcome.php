@@ -72,7 +72,7 @@
             <table role="presentation" style="width:100%;border:0;border-spacing:0;">
               <tr>
                 <td style="padding:10px 10px 20px 10px;font-family:Arial,sans-serif;font-size:24px;line-height:28px;font-weight:bold;">
-                  <img src="https://ci5.googleusercontent.com/proxy/UVQL7k8QCzT5I-4T1iP8R6ilxmmh7SCde474xql7_CqAsNgqwD7tLwFVAhwS4LTwlrF49SFBBiXchRrEvlI=s0-d-e1-ft#https://assets.codepen.io/210284/header.png" width="640" alt="" style="width:100%;height:auto;" />
+                  <img src="#" width="640" alt="" style="width:100%;height:auto;" />
                 </td>
               </tr>
               <tr>
@@ -95,7 +95,7 @@
               <div class="column" style="width:100%;max-width:330px;display:inline-block;vertical-align:middle;">
                 <div style="padding:10px;">
                   <p style="margin:0;font-family:Arial,sans-serif;font-size:14px;line-height:18px;">
-                    <img src="https://ci5.googleusercontent.com/proxy/dBvT4wPxCAnOrqtNe6Yogw6HL4DSv-lWnKMKa-Tob2d_2kcVcV5uTpm695yZNoInTyschZ1g9OOv1wxB0UDmuYb4kXQ3=s0-d-e1-ft#https://assets.codepen.io/210284/two-column-01.png" width="310" alt="" style="display:block;width:310px;max-width:100%;height:auto;" />
+                    <img src="#" width="310" alt="" style="display:block;width:310px;max-width:100%;height:auto;" />
                   </p>
                 </div>
               </div>
@@ -128,7 +128,7 @@
               <div class="column" style="width:100%;max-width:330px;display:inline-block;vertical-align:middle;direction:ltr;">
                 <div style="padding:10px;font-size:14px;line-height:18px;">
                   <p style="margin:0;font-family:Arial,sans-serif;">
-                    <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-farmers-market-illustration_23-2149344901.jpg?w=740&t=st=1695627118~exp=1695627718~hmac=be8b37d95425036ecce03f7b2905f76076fe1bb67a2aba9f3a683211e06c03ac" width="310" alt="" style="display:block;width:310px;max-width:100%;height:auto;" />
+                    <img src="#" width="310" alt="" style="display:block;width:310px;max-width:100%;height:auto;" />
                   </p>
                 </div>
               </div>

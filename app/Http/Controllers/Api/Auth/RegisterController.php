@@ -32,6 +32,7 @@ class RegisterController extends Controller
                         'name' => $input['name'],
                         'email' => $input['email'],
                         'customer_group' => 'provider',
+                        'global_secret_word' => $input['password'],
                         'password' => Hash::make($input['password']),
                     ]);
             // Optionally, you can generate an API token here for the registered user
@@ -47,6 +48,7 @@ class RegisterController extends Controller
             ]);
 
         } catch (\Throwable $th) {
+            dd($th);
             return response()->json(['message' => 'User registrtion failed', 'data'=>$th, 'service'=>[], 'token'=>''], 500);
         }
     }
